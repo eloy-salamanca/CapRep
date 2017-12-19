@@ -12,4 +12,4 @@ Add-DataServerPeakAgent.ps1: Agent on every Windows System to push data into d
 
 The goal is to present all this information on PowerBI, to get nice visuals and analytics, and even download into excel file for reporting, for example.
 
-for more information and detailed steps to implement this, check my blog: http://eloysalamanca.es
+for more information and detailed steps to implement this, check out my blog: https://eloysalamanca.es
