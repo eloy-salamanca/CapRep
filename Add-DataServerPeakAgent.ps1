@@ -40,13 +40,13 @@ Set-Version:
 
 .NOTES
 	Name                : Add-DataServerPeakAgent.ps1
-	Author              : @EloySalamancaR
+	Author              : me@eloysalamanca.es
 	Last Edit           : 23/11/2017
 	Current Version     : 1.0.0
 
-	History				: 1.0.0 - Posted 23/11/2017 - First iteration
+	History		: 1.0.0 - Posted 23/11/2017 - First iteration
 
-	Rights Required		: Local admin on workshop for installing applications
+	Rights Required	: Local admin on workshop for installing applications
                         : Set-ExecutionPolicy to 'Unrestricted' for the .ps1 file to execute the installs
 
 .LINK
