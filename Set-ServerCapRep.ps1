@@ -2,7 +2,7 @@
 Capacity Planning Data Gathering
 
 Eloy Salamanca | IT-Consultant & Technical Advisor
-@EloySalamancaR
+me@eloysalamanca.es
 
 Part of Capacity Planning Auto Populated REPort
 
@@ -15,7 +15,7 @@ Generated on: 23/11/2017
     Set-ServerCapRep.ps1 retrieves basic system information from servers and
     install every single agent to pull data at scheduled times.
 .DESCRIPTION
-	Set-ServerCapRep.ps1 uses CIM/WMI to retrieve system information from servers.
+    Set-ServerCapRep.ps1 uses CIM/WMI to retrieve system information from servers.
     Also, uses ADO.NET to push all this information in a SQL Server
     
     Then, Set-ServerCapRep.ps1 install Add-DataServerPeakAgent.ps1 on every
@@ -25,7 +25,7 @@ Generated on: 23/11/2017
 	File name containing servers list to gather data.
 
 .PARAMETER <drivetype>
-	3 is a fixed disk, 2 is removable disk. 
+    3 is a fixed disk, 2 is removable disk. 
     See Win32_LogicalDisk documentation for a list of values.
 
 .PARAMETER <InstallAgent>
@@ -36,17 +36,17 @@ Generated on: 23/11/2017
 
 .NOTES
 	Name                : Set-ServerCapRep.ps1
-	Author              : @EloySalamancaR
+	Author              : me@eloysalamanca.es
 	Last Edit           : 23/11/2017
 	Current Version     : 1.0.0
 
-	History				: 1.0.0 - Posted 23/11/2017 - First iteration
+	History		: 1.0.0 - Posted 23/11/2017 - First iteration
 
-	Rights Required		: Local admin on workshop for installing applications
+	Rights Required	: Local admin on workshop for installing applications
                         : Set-ExecutionPolicy to 'Unrestricted' for the .ps1 file to execute the installs
 
 .LINK
-    https://twitter.com/EloySalamancaR
+    https://eloysalamanca.es
 
 .FUNCTIONALITY
    Part of Capacity Planning Data Gathering Report,
@@ -169,7 +169,7 @@ Function Install-Agent
 # =======================================================================
 # PROCESS
 # =======================================================================
-#$date = (Get-Date -Format ëyyyyMMddHHmmssí).ToString()
+#$date = (Get-Date -Format ‚ÄòyyyyMMddHHmmss‚Äô).ToString()
 $date = Get-Date
 $servers = Get-Content $file
 $TotalServers = $Servers.count
@@ -178,13 +178,13 @@ $Message = "Deploying Add-DataServerPeakAgent on Servers list..."
 
 # Specify SQL Connection String..............................................................................................
 # Case that SQL Server joined to domain
-#$conStr = ìData Source=$DBServer; Initial Catalog=CAPRep; Integrated Security=SSPIî
+#$conStr = ‚ÄúData Source=$DBServer; Initial Catalog=CAPRep; Integrated Security=SSPI‚Äù
 # ...........................................................................................................................
 # Case SQL Server isolated (SQL Authentication, plaintext)
 $DBName = "CapRep"
 $DBUser = "CapRepUser"
 $DBPasswd = "C4p4c1tyPl4n01"
-$conStr = ìData Source=$DBServer; Initial Catalog=$DBName; Integrated Security=False; User ID=$DBUser; Password = $DBPasswdî
+$conStr = ‚ÄúData Source=$DBServer; Initial Catalog=$DBName; Integrated Security=False; User ID=$DBUser; Password = $DBPasswd‚Äù
 # ...........................................................................................................................
    
 foreach ($server in $servers) {
