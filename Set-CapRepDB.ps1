@@ -27,9 +27,9 @@ Generated on: 12/12/2017
 	Last Edit           : 12/12/2017
 	Current Version     : 1.0.0
 
-	History				: 1.0.0 - Posted 12/12/2017 - First iteration
+	History		: 1.0.0 - Posted 12/12/2017 - First iteration
 
-	Rights Required		: SQL User with apropiate privileges to create db
+	Rights Required	: SQL User with apropiate privileges to create db
                         : Set-ExecutionPolicy to 'Unrestricted' for the .ps1 file to execute the installs
 
 .LINK
