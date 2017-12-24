@@ -2,7 +2,7 @@
 Capacity Planning Data Gathering
 
 Eloy Salamanca | IT-Consultant & Technical Advisor
-@EloySalamancaR
+me@eloysalamanca.es
 
 Part of Capacity Planning Auto Populated REPort
 
@@ -23,7 +23,7 @@ Generated on: 12/12/2017
 
 .NOTES
 	Name                : Set-CapRepDB.ps1
-	Author              : @EloySalamancaR
+	Author              : me@eloysalamanca.es
 	Last Edit           : 12/12/2017
 	Current Version     : 1.0.0
 
@@ -33,7 +33,7 @@ Generated on: 12/12/2017
                         : Set-ExecutionPolicy to 'Unrestricted' for the .ps1 file to execute the installs
 
 .LINK
-    https://twitter.com/EloySalamancaR
+    https://eloysalamanca.es
 
 .FUNCTIONALITY
    Part of Capacity Planning Data Gathering Report,
