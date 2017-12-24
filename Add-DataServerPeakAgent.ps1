@@ -2,7 +2,7 @@
 Capacity Planning Data Gathering
 
 Eloy Salamanca | IT-Consultant & Technical Advisor
-@EloySalamancaR
+me@eloysalamanca.es
 
 Part of Capacity Planning Auto Populated REPort
 
@@ -38,7 +38,6 @@ Set-Version:
 .PARAMETER <DBServer>
     To specify a different server to save data.
 
-
 .NOTES
 	Name                : Add-DataServerPeakAgent.ps1
 	Author              : @EloySalamancaR
@@ -51,7 +50,7 @@ Set-Version:
                         : Set-ExecutionPolicy to 'Unrestricted' for the .ps1 file to execute the installs
 
 .LINK
-    https://twitter.com/EloySalamancaR
+    https://eloysalamanca.es
 
 .FUNCTIONALITY
    Part of Capacity Planning Data Gathering Report,
@@ -59,10 +58,10 @@ Set-Version:
 #>
 [CmdletBinding()]
 param (
-    [string]$DBServer = "GSTD048",
+    [string]$DBServer = "localhost",
     [string]$DBName = "CapRep",
     [string]$DBUser = "CapRepUser",
-    [string]$DBPasswd = "C4p4c1tyPl4n01"
+    [string]$DBPasswd = "*******"
 )
 # =======================================================================
 # FUNCTIONS
@@ -121,7 +120,7 @@ $ComputerName = $env:COMPUTERNAME
 
 # Specify SQL Connection String..............................................................................................
 # Case SQL Server isolated (SQL Authentication, plaintext)
-$conStr = ìData Source=$DBServer; Initial Catalog=$DBName; Integrated Security=False; User ID=$DBUser; Password = $DBPasswdî
+$conStr = ‚ÄúData Source=$DBServer; Initial Catalog=$DBName; Integrated Security=False; User ID=$DBUser; Password = $DBPasswd‚Äù
 # ...........................................................................................................................
    
 $OSInfo = Get-WmiObject Win32_OperatingSystem #Get OS Information
@@ -138,7 +137,7 @@ Write-Verbose "ProcessorTime: $ProcessorTime"
 #Write-Verbose "ProcessorQueueLength: $ProcessorQueueLength"
 
 #Memory
-#gwmi -Class win32_operatingsystem | Select-Object @{Name = "MemoryUsage"; Expression = { ì{0:N2}î -f ((($_.TotalVisibleMemorySize - $_.FreePhysicalMemory)*100)/ $_.TotalVisibleMemorySize) } }
+#gwmi -Class win32_operatingsystem | Select-Object @{Name = "MemoryUsage"; Expression = { ‚Äú{0:N2}‚Äù -f ((($_.TotalVisibleMemorySize - $_.FreePhysicalMemory)*100)/ $_.TotalVisibleMemorySize) } }
 Write-Verbose "======================================================"
 $MemoryPhysicalMB = [double][math]::round((Get-WmiObject -Class Win32_ComputerSystem).TotalPhysicalMemory /1GB,0)
 Write-Verbose "MemoryPhysicalMB: $MemoryPhysicalMB"
@@ -159,7 +158,7 @@ ExecNonQuery -conStr $conStr -cmdText $cmdTextSrvPeaks
 Write-Verbose "#################################################################"
 
 #Disk - {0:###0.00}
-#Get-WmiObject -Class win32_Volume -ComputerName $_ -Filter "DriveLetter = 'C:'" | Select-object @{Name = "C PercentFree"; Expression = { ì{0:N2}î -f (($_.FreeSpace / $_.Capacity)*100) } }
+#Get-WmiObject -Class win32_Volume -ComputerName $_ -Filter "DriveLetter = 'C:'" | Select-object @{Name = "C PercentFree"; Expression = { ‚Äú{0:N2}‚Äù -f (($_.FreeSpace / $_.Capacity)*100) } }
 Write-Verbose "======================================================"
 $Drives = Get-PSDrive -PSProvider FileSystem | Where { $_.used } # We only take into account Local Drives
 Foreach ($Drive in $Drives) {
@@ -170,7 +169,7 @@ Foreach ($Drive in $Drives) {
     $DiskCapacity = [math]::round([float]$DiskUsed+$DiskFree,2)
     Write-Verbose "DiskCapacity($Drive): $DiskCapacity"
     Write-Verbose "DiskFree($Drive): $DiskFree"
-    $DiskPctFree= [math]::round($Drive.free/($Drive.free+$Drive.used)*100 ñas [float],2)
+    $DiskPctFree= [math]::round($Drive.free/($Drive.free+$Drive.used)*100 ‚Äìas [float],2)
     Write-Verbose "DiskPctFree($Drive): $DiskPctFree"
     $FormatedDrive = $Drive.Name + ":"
     #DiskActivity - Logical
